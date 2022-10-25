@@ -1,5 +1,5 @@
-﻿// Задачи семинаров по теме "Знакомство с языком прграммирования С#
-
+﻿// Задачи семинаров по теме "Знакомство с языком программирования С#
+/*
 Console.WriteLine("Решение задач первого семинара с использованием методов\n");
 
 int MaxOfTwo(int one, int two) //задача 2 - максимум из двух чисел
@@ -150,6 +150,99 @@ bool DayCheck(int num) //задача 15 - проверка выходного
         if (DayCheck(oneNum) == true) Console.Write("День " + oneNum + " выходной\n\n");
         else Console.Write("День " + oneNum + " рабочий\n\n");
     }
+    */
+
+    
+Console.WriteLine("Решение задач урока 3 с использованием методов\n");
+
+
+bool DefPalindromFiveDigit(int num) //задача 19 - является ли пятизначное число палиндромом
+{
+    int numForConvert = num;
+    
+    int dimPalindrom = 2; // длина половины палиндрома нечетной размерности без середины, на будущее 
+    int firstFig = 0;
+    int secondFig = 0;
+    
+// цикл делается для того, чтобы можно было модернизировать метод до проверки любых нечетных палиндромов
+    for (int i = dimPalindrom; i >= 1; i--) {
+        //Console.WriteLine($"счетчик цикла {i} число {numForConvert}");
+
+// определене первой и последней цифры вынесено в отдельные операторы для удобства
+        firstFig = (int)(numForConvert / Math.Pow(10, (i * 2)));
+        secondFig = numForConvert % 10;
+        //Console.WriteLine($"первая цифра {firstFig} последняя цифра {secondFig}");
+            
+        if (firstFig != secondFig) {return (false); }
+        else {
+            numForConvert = (int)(numForConvert % Math.Pow(10, (i * 2))) / 10;
+            //Console.WriteLine(numForConvert);
+        }
+    }
+    return (true);
+}
+
+/*
+
+int MaxOfTwo(int one, int two) //задача 2 - максимум из двух чисел
+{
+    int max = one;
+    if (two >= max) max = two;
+    return (max);
+}
+
+int MaxOfThree(int one, int two, int three) //задача 4 - максимум из трёх чисел
+{
+    int max = one;
+    if (two >= max) max = two;
+    if (three >= max) max = three;
+    return (max);
+}
+
+
+void SecondPoint(int num) //задача 10 - вывод второй цифры трёхзначного числа
+{
+    if (num >= 1000 || num <=99) {
+        Console.Write("Недопустимое значение\n\n");
+        return;
+    }
+    int rezult = num % 100 / 10;
+    Console.Write("Вторая цифра числа " + num + " - " + rezult + "\n\n");
+}
+
+void ThirdPoint(int num) //задача 13 - вывод третьей цифры заданного числа
+{
+    if (num < 100) {
+        Console.Write("Недопустимое значение\n\n");
+        return;
+    }
+    int rezult = num;
+    while (rezult > 1000) rezult = rezult / 10;
+    
+    rezult = rezult % 10;
+    Console.Write("Третья цифра числа " + num + " - " + rezult + "\n\n");
+}
+*/
+
+
+Console.Write("Задача 19 - является ли пятизначное число палиндромом\n");
+    
+    bool flag = true;
+
+    Console.Write("Введите целое пятизначное число > ");
+    int oneNum = Convert.ToInt32(Console.ReadLine());
+
+    if (oneNum < 10000 || oneNum > 99999) Console.Write("Недопустимое значение ввода\n\n");
+    else {
+        flag = DefPalindromFiveDigit(oneNum); 
+        if (flag) Console.Write($"Число {oneNum} является палиндромом\n\n");
+        else Console.Write($"Число {oneNum} не является палиндромом\n\n");
+    }
+    
+
+    
+
+
 
     
   
