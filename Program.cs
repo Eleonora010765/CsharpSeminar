@@ -166,17 +166,14 @@ bool DefPalindromFiveDigit(int num) //задача 19 - является ли п
     
 // цикл делается для того, чтобы можно было модернизировать метод до проверки любых нечетных палиндромов
     for (int i = dimPalindrom; i >= 1; i--) {
-        //Console.WriteLine($"счетчик цикла {i} число {numForConvert}");
-
+       
 // определене первой и последней цифры вынесено в отдельные операторы для удобства
         firstFig = (int)(numForConvert / Math.Pow(10, (i * 2)));
         secondFig = numForConvert % 10;
-        //Console.WriteLine($"первая цифра {firstFig} последняя цифра {secondFig}");
             
         if (firstFig != secondFig) {return (false); }
         else {
             numForConvert = (int)(numForConvert % Math.Pow(10, (i * 2))) / 10;
-            //Console.WriteLine(numForConvert);
         }
     }
     return (true);
