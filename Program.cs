@@ -150,7 +150,7 @@ bool DayCheck(int num) //задача 15 - проверка выходного
         if (DayCheck(oneNum) == true) Console.Write("День " + oneNum + " выходной\n\n");
         else Console.Write("День " + oneNum + " рабочий\n\n");
     }
-    */
+  
 
     
 Console.WriteLine("Решение задач урока 3 с использованием методов\n");
@@ -177,6 +177,53 @@ bool DefPalindromFiveDigit(int num) //задача 19 - является ли п
         }
     }
     return (true);
+}
+  */
+
+int[] InputMassConsole() 
+{
+    int[] massCoordinats = {0, 0, 0};
+    string? arrayText = Console.ReadLine();
+
+    int indexCoordinat = 0;
+    int tmpCoordinat = 0;
+    int tmp1 = 0;
+
+    for (int i = 0; i < arrayText.Length; i++) {
+        if (arrayText[i] != ',' && arrayText[i] != ' ') {
+            Console.Write($"Input {arrayText} index {i} indexCoordinat {indexCoordinat} massCoordinats[indexCoordinat] {massCoordinats[indexCoordinat]}\n");
+            tmpCoordinat = massCoordinats[indexCoordinat];
+            tmp1 = arrayText[i] - '0';
+            tmpCoordinat = (int)(tmpCoordinat * Math.Pow(10, indexCoordinat+1));
+            Console.Write($"Степень {indexCoordinat} значение {tmpCoordinat} символ {arrayText[i]} {tmp1} \n");
+            tmpCoordinat = tmpCoordinat + tmp1; 
+            indexCoordinat++; 
+            Console.Write($"тепень {indexCoordinat} значение {tmpCoordinat}\n");  
+        } 
+        else {
+            //Console.Write($"Координата {indexCoordinat} значение {massCoordinats[indexCoordinat-1]}\n");
+            indexCoordinat = 0;
+        }
+        Console.Write($"тепень {indexCoordinat} значение {tmpCoordinat}\n"); 
+    }
+
+    return massCoordinats;
+}
+
+double DistPointThreeDimSpace(int[] arr1, int[] arr2)
+{
+    int[] vectorArr = {1, 1, 1};
+    int vectorLenght = 0;
+
+    for (int i = 0; i <= 2; i++) {
+        vectorArr[i] = arr1[i] - arr2[i];
+        Console.Write(vectorArr);
+        vectorLenght = vectorLenght + (int)Math.Pow(vectorArr[i], 2);
+    }
+
+    vectorLenght = (int)Math.Sqrt(vectorLenght);
+    return vectorLenght;
+    
 }
 
 /*
@@ -219,7 +266,7 @@ void ThirdPoint(int num) //задача 13 - вывод третьей цифр�
     rezult = rezult % 10;
     Console.Write("Третья цифра числа " + num + " - " + rezult + "\n\n");
 }
-*/
+
 
 
 Console.Write("Задача 19 - является ли пятизначное число палиндромом\n");
@@ -235,6 +282,20 @@ Console.Write("Задача 19 - является ли пятизначное ч
         if (flag) Console.Write($"Число {oneNum} является палиндромом\n\n");
         else Console.Write($"Число {oneNum} не является палиндромом\n\n");
     }
+*/
+
+Console.Write("Задача 21 - расстояние между двумя точками в трехмерном пространстве\n\n");
+
+    Console.Write("Введите через запятую координаты первой точки > ");
+    int[] firstPoint = InputMassConsole();
+    Console.Write("Введите через запятую координаты второй точки > ");
+    int[] secondPoint = InputMassConsole();
+
+    int distPoint = (int)DistPointThreeDimSpace(firstPoint, secondPoint);
+
+    Console.Write($"Расстояние {distPoint}");
+
+
     
 
     
