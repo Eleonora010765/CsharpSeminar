@@ -180,52 +180,92 @@ bool DefPalindromFiveDigit(int num) //задача 19 - является ли п
 }
   */
 
-int[] InputMassConsole() 
-{
-    int[] massCoordinats = {0, 0, 0};
-    string? arrayText = Console.ReadLine();
+// В решении задачи 21 использую олдскульный подход - модифицирую глобальные переменные, 
+// что, как понимаю, делает написанный ниже фрагмент не методом, а подпрограммой
 
-    int indexCoordinat = 0;
-    int tmpCoordinat = 0;
-    int tmp1 = 0;
+int[] coordTmp = {0, 0, 0};
+
+int[] coordFirst = {0, 0, 0};
+int[] coordSecond = {0, 0, 0};
+
+
+bool InputMassConsole() 
+{
+    int flagCoordinats = 0;  // позиция в массиве вычисленных координат: 0 - X, 1 - Y, 2 - Z для внешнего массива coordTmp[]
+
+    string? arrayText = Console.ReadLine();  // введенная текстом координата
+    string comma = ","; 
+    arrayText = arrayText + comma;
+
+    int[] arrayNum = new int[(int)(arrayText.Length)]; // введенная текстом координата, переведенная в цифры
+    int indexCoordinat = 0; // индекс для создания массива цифр - введенной текстом координаты, переведенная в цифры
+    int flagSign = 1;
+    int bitDepth = 0;  // разрядность введенного числа - считается при анализе текстовой строки
+    int tmp = 0; // переменная для черновых расчетов, всегда обнуляется перед использованием
 
     for (int i = 0; i < arrayText.Length; i++) {
-        if (arrayText[i] != ',' && arrayText[i] != ' ') {
-            Console.Write($"Input {arrayText} index {i} indexCoordinat {indexCoordinat} massCoordinats[indexCoordinat] {massCoordinats[indexCoordinat]}\n");
-            tmpCoordinat = massCoordinats[indexCoordinat];
-            tmp1 = arrayText[i] - '0';
-            tmpCoordinat = (int)(tmpCoordinat * Math.Pow(10, indexCoordinat+1));
-            Console.Write($"Степень {indexCoordinat} значение {tmpCoordinat} символ {arrayText[i]} {tmp1} \n");
-            tmpCoordinat = tmpCoordinat + tmp1; 
-            indexCoordinat++; 
-            Console.Write($"тепень {indexCoordinat} значение {tmpCoordinat}\n");  
+        
+        if (arrayText[i] != ',' && arrayText[i] != ' ') {            
+            if (arrayText[i] > '9' && arrayText[i] != '-') return(false);  //если введена не цифра, минус, запятая или пробел - ошибка ввода
+            
+            if (arrayText[i] == '-') flagSign = -1;
+            else {
+                arrayNum[indexCoordinat] = arrayText[i] - '0';
+
+                //Console.Write($"IF Ц позиция {indexCoordinat} значение {arrayNum[indexCoordinat]}\n");
+                indexCoordinat++; 
+                bitDepth++; 
+            } 
         } 
         else {
-            //Console.Write($"Координата {indexCoordinat} значение {massCoordinats[indexCoordinat-1]}\n");
+            if (flagCoordinats > 2) return(false); // если введено больше 3 координат - ошибка ввода
+            if (arrayText[i] != ' ') {         // при вводе пробела ничего не вычисляется
+                if (arrayText[i] == '-') flagSign = -1;  // определяем знак - координата может быть отрицательной
+                tmp = 0;
+                
+                for (int j = 0; j < indexCoordinat; j++) {
+                    bitDepth--;
+                    //Console.Write($"FOR З позиция {j} значение {arrayNum[j]} степень 10 {bitDepth}\n");
+                    tmp = tmp + arrayNum[j] * (int)Math.Pow(10, bitDepth);
+                }
+             
+            tmp = tmp * flagSign;
+            coordTmp[flagCoordinats] = tmp;
+            //Console.Write($"координата {flagCoordinats} значение {coordTmp[flagCoordinats]}\n");  
+            //Console.Write($"координата {flagCoordinats} значение {coordTmp[flagCoordinats]}\n");
+            if (flagCoordinats == 2) break; else flagCoordinats++;
             indexCoordinat = 0;
-        }
-        Console.Write($"тепень {indexCoordinat} значение {tmpCoordinat}\n"); 
+            flagSign = 1;
+            bitDepth = 0;
+                
+            }
+
+        } 
     }
-
-    return massCoordinats;
+    if (flagCoordinats < 2) return(false); // если введено меньше 3 координат - ошибка ввода
+    //Console.Write($" Результат {coordTmp[0]} {coordTmp[1]} {coordTmp[2]}\n");
+    return(true);
 }
+ 
 
-double DistPointThreeDimSpace(int[] arr1, int[] arr2)
+
+double DistPointThreeDimSpace()
 {
     int[] vectorArr = {1, 1, 1};
-    int vectorLenght = 0;
+    double vectorLenght = 0;
 
     for (int i = 0; i <= 2; i++) {
-        vectorArr[i] = arr1[i] - arr2[i];
-        Console.Write(vectorArr);
+        vectorArr[i] = coordFirst[i] - coordSecond[i];
+        //Console.Write(vectorArr[i]);
         vectorLenght = vectorLenght + (int)Math.Pow(vectorArr[i], 2);
     }
 
-    vectorLenght = (int)Math.Sqrt(vectorLenght);
+    vectorLenght = Math.Sqrt(vectorLenght);
     return vectorLenght;
     
 }
-
+// int[] coordFirst = {0, 0, 0};
+//int[] coordSecond = {0, 0, 0};
 /*
 
 int MaxOfTwo(int one, int two) //задача 2 - максимум из двух чисел
@@ -286,15 +326,33 @@ Console.Write("Задача 19 - является ли пятизначное ч
 
 Console.Write("Задача 21 - расстояние между двумя точками в трехмерном пространстве\n\n");
 
-    Console.Write("Введите через запятую координаты первой точки > ");
-    int[] firstPoint = InputMassConsole();
-    Console.Write("Введите через запятую координаты второй точки > ");
-    int[] secondPoint = InputMassConsole();
+        
+    Console.Write("Введите через запятую три координаты первой точки > ");
+    bool firstReturn = InputMassConsole();
+    bool secondReturn = false;
 
-    int distPoint = (int)DistPointThreeDimSpace(firstPoint, secondPoint);
+    if (firstReturn) {
+        for (int k = 0; k < 3; k++) {
+           coordFirst[k] = coordTmp[k];
+        }
+        
+        Console.Write("Введите через запятую три координаты второй точки > ");
+        secondReturn = InputMassConsole();
+        
+        if (secondReturn) {
+            for (int l = 0; l < 3; l++) {
+                coordSecond[l] = coordTmp[l];
+            }
+            double distPoint = DistPointThreeDimSpace();
+            Console.Write($"Расстояние {distPoint}");
+        }
+       
+    
+    }
+    
 
-    Console.Write($"Расстояние {distPoint}");
-
+    
+    
 
     
 
