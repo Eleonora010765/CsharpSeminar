@@ -182,7 +182,7 @@ bool DefPalindromFiveDigit(int num) //задача 19 - является ли п
 
 // В решении задачи 21 использую олдскульный подход - модифицирую глобальные переменные, 
 // что, как понимаю, делает написанный ниже фрагмент не методом, а подпрограммой
-
+/*
 int[] coordTmp = {0, 0, 0};
 
 int[] coordFirst = {0, 0, 0};
@@ -264,10 +264,33 @@ double DistPointThreeDimSpace()
     return vectorLenght;
     
 }
-// int[] coordFirst = {0, 0, 0};
-//int[] coordSecond = {0, 0, 0};
-/*
+*/
 
+void AllCube(int mCube)
+{
+    int startNum = 1;
+    int stepNum = 1;
+    
+    if (mCube == 0) return;
+    Console.Write($"{mCube} -> "); 
+    
+    if (mCube < 0 ){
+        startNum = -1;
+        stepNum = -1;
+    }
+        
+    do {
+        Console.Write($"{Math.Pow(startNum, 3)}, ");
+        startNum = startNum + stepNum;
+    }
+    while (startNum * stepNum < mCube * stepNum);
+
+    Console.Write($"{Math.Pow(startNum, 3)}\n");
+}
+
+
+
+/*
 int MaxOfTwo(int one, int two) //задача 2 - максимум из двух чисел
 {
     int max = one;
@@ -322,7 +345,7 @@ Console.Write("Задача 19 - является ли пятизначное ч
         if (flag) Console.Write($"Число {oneNum} является палиндромом\n\n");
         else Console.Write($"Число {oneNum} не является палиндромом\n\n");
     }
-*/
+
 
 Console.Write("Задача 21 - расстояние между двумя точками в трехмерном пространстве\n\n");
 
@@ -349,6 +372,15 @@ Console.Write("Задача 21 - расстояние между двумя то
        
     
     }
+*/
+
+Console.Write("Задача 23 - вывод кубов до заданного числа\n\n");
+
+        
+    Console.Write("Введите целое число > ");
+    int maxCubeNum = Convert.ToInt32(Console.ReadLine());
+    AllCube(maxCubeNum);
+
     
 
     
