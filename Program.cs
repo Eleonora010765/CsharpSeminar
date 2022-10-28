@@ -150,7 +150,7 @@ bool DayCheck(int num) //задача 15 - проверка выходного
         if (DayCheck(oneNum) == true) Console.Write("День " + oneNum + " выходной\n\n");
         else Console.Write("День " + oneNum + " рабочий\n\n");
     }
-*/  
+ 
 
     
 Console.WriteLine("Решение задач урока 3 с использованием методов\n");
@@ -288,7 +288,63 @@ void AllCube(int mCube)  // Выводит кубы чисел от нуля д�
 
     Console.Write($"{Math.Pow(startNum, 3)}\n");
 }
+*/
 
+// Методы к уроку 4
+
+// "Метод Задачи 25 - возведение в степень, где основание и степень вводятся вручную\n\n"
+
+bool NumToGivenDegree()  // Выводит кубы чисел от нуля до заданного с учетом знака
+{
+    int tmpNum = 0;
+    int tmpDegree = 0;
+    string? flagContinue = "y";
+    do {
+        Console.Write("Введите основание A (любое целое число, кроме нуля) > ");
+        tmpNum = Convert.ToInt32(Console.ReadLine()); 
+        if (tmpNum == 0) return(false);
+
+        Console.Write("Введите степень B (натуральное число) > ");
+        tmpDegree = Convert.ToInt32(Console.ReadLine());
+        if (tmpDegree < 0) return(false);
+        Console.Write($"{tmpNum} в степени {tmpDegree} равно {Math.Pow(tmpNum, tmpDegree)}. Продолжить? y/n > ");
+        flagContinue = Console.ReadLine();
+    } while (flagContinue == "y");
+    return(true);
+}
+
+
+// Метод Задачи 27 - подсчет суммы цифр введенного целого числа
+        
+int SumOfDigit(int argNum)  
+{
+    int argRez = 0;
+    int tmpNum = argNum;
+    
+    do {
+        argRez = argRez + (tmpNum % 10);
+        tmpNum = tmpNum / 10;
+    } while ((tmpNum * 10) > 10);
+    return(argRez);
+}
+
+
+// "Метод Задачи 29 - создание массива заданной размерности и вывод его на экран
+
+void CreateArrayOnDisplay(int numElem)  
+{
+    int[] tmpArray = new int[numElem];
+    Random tmpRand = new Random();
+
+    Console.Write($"Массив из {numElem} элементов > ");
+
+    for (int n = 0; n < numElem-1; n++) {
+        tmpArray[n] = tmpRand.Next(0, 100);
+        Console.Write($"{tmpArray[n]}, ");
+    }
+    tmpArray[numElem-1] = tmpRand.Next(0, 100); // присвоение значения последнему элементу вынесено для красивого вывода - отсутсвие запятой и перевод строки
+    Console.Write($"{tmpArray[numElem-1]}\n\n");
+}
 
 
 /*
@@ -331,7 +387,7 @@ void ThirdPoint(int num) //задача 13 - вывод третьей цифр�
     Console.Write("Третья цифра числа " + num + " - " + rezult + "\n\n");
 }
 
-*/
+
 
 Console.Write("Задача 19 - является ли пятизначное число палиндромом\n");
     
@@ -340,7 +396,7 @@ Console.Write("Задача 19 - является ли пятизначное ч
     Console.Write("Введите целое пятизначное число > ");
     int oneNum = Convert.ToInt32(Console.ReadLine());
 
-    if (oneNum < 10000 || oneNum > 99999) Console.Write("Недопустимое значение ввода\n\n");
+    if (oneNum < 10000 || oneNum > 99999) { Console.Write("Недопустимое значение ввода\n\n");
     else {
         flag = DefPalindromFiveDigit(oneNum); 
         if (flag) Console.Write($"Число {oneNum} является палиндромом\n\n");
@@ -369,19 +425,53 @@ Console.Write("Задача 21 - расстояние между двумя то
             }
             double distPoint = DistPointThreeDimSpace();
             Console.Write($"Расстояние {distPoint}\n\n");
-        }
-       
-    
-    }
-
+        } else Console.Write("Ошибка ввода\n\n");
+    }  
+    else Console.Write("Ошибка ввода\n\n");
 
 Console.Write("Задача 23 - вывод кубов до заданного числа с учетом знака\n\n");
         
     Console.Write("Введите целое число > ");
-    int maxCubeNum = Convert.ToInt32(Console.ReadLine());
+    int maxCubeNum = Convert.ToInt32(Console.ReadLine());NumToGivenDegree()
     AllCube(maxCubeNum);
+*/
 
-    
+
+// Задачи урока 4
+
+
+Console.Write("Задача 25 - обращение к методу возведения в степень, где основание и степень вводятся вручную\n\n");
+Console.Write("Предупреждение! Поскольку мы не работали с представлением чисел float, используется тип int\n\n");
+        
+    Console.Write("Вызвать метод возведения целого заданного в натуралную заданную степень? y/n > ");
+    string? flagExit = Console.ReadLine();
+    bool rezExp = false;
+
+// только при ответе y вызываем метод возведения в степень bool NumToGivenDegree()? весь ввод-вывод внутри метода
+    if (flagExit == "y") {
+        rezExp = NumToGivenDegree();
+        if (!rezExp) Console.Write("Ошибка ввода\n\n");
+    }
+
+
+Console.Write("Задача 27 - обращение к методу подсчета суммы цифр введенного целого числа\n\n");
+        
+    Console.Write("Введите целое число больше нуля > ");
+    int tmpInt = Convert.ToInt32(Console.ReadLine()); 
+
+    int rezSum = SumOfDigit(tmpInt);
+    Console.Write($"Сумма цифр числа {tmpInt} -> {rezSum} \n\n");
+
+
+     
+Console.Write("Задача 29 - обращение к методу создания массива заданной размерности и вывода его на экран\n\n");
+Console.Write("Чтобы не загромождать вывод, числа генерируем в пределах 100\n\n");
+        
+    Console.Write("Введите размерность массива > ");
+    int dimensOfArray = Convert.ToInt32(Console.ReadLine()); 
+
+    CreateArrayOnDisplay(dimensOfArray);     
+
 
     
     
