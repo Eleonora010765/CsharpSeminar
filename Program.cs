@@ -345,7 +345,7 @@ void CreateArrayOnDisplay(int numElem)
     tmpArray[numElem-1] = tmpRand.Next(0, 100); // присвоение значения последнему элементу вынесено для красивого вывода - отсутсвие запятой и перевод строки
     Console.Write($"{tmpArray[numElem-1]}\n\n");
 }
-*/
+
 
 // Методы к уроку 5
 
@@ -368,7 +368,7 @@ int DimensionOfEvenNum(int dimThDigit, int[] arrThDigit)    // подсчёт ч
     
     return(countEvenNum);
 }
-
+*/
 /*
 // Метод Задачи 27 - подсчет суммы цифр введенного целого числа
         
@@ -527,7 +527,7 @@ Console.Write("Чтобы не загромождать вывод, числа �
     int dimensOfArray = Convert.ToInt32(Console.ReadLine()); 
 
     CreateArrayOnDisplay(dimensOfArray);     
-*/
+
 
 
 // Задачи урока 5
@@ -549,9 +549,33 @@ Console.Write("Задача 34 - заполнение массива задан�
     Console.Write($"В массиве из {dimOfThreeArray} элементов > ");
     for (int n = 0; n < dimOfThreeArray-1; n++) Console.Write($"{arrayOfThreeDigit[n]}, ");
     Console.Write($"{arrayOfThreeDigit[dimOfThreeArray-1]} содержится {numOfEvenNum} четных элементов \n\n"); 
+*/
+     
+Console.Write("Задача 36 - заполнение массива случайными числами, подсчет суммы элементов нечётных позиций\n\n");
+Console.Write("Чтобы не загромождать вывод, числа генерируем в пределах 100\n\n");
+Console.Write("Просто для разнообразия не вызываем методы, все делаем прямо здесь\n\n");
+        
+    Console.Write("Введите размерность массива > ");
+    int dimensOfArrayTask36 = Convert.ToInt32(Console.ReadLine()); 
+    int[] arrayOfTask36 = new int[dimensOfArrayTask36];
 
-  
+    Random numRandTask36 = new Random();
+
+    int rezultTask36 = 0;
+
+    Console.Write($"Сумма чисел на нечетных позициях массива из {dimensOfArrayTask36} элементов > ");
+
+    for (int n = 0; n < dimensOfArrayTask36; n++) {
+        arrayOfTask36[n] = numRandTask36.Next(0, 100); 
+        Console.Write($"{arrayOfTask36[n]}  ");
+        if (n % 2 == 0) rezultTask36 = rezultTask36 + arrayOfTask36[n];
+    }
+
+    Console.Write($"составляет {rezultTask36}\n\n");
     
+
+
+
 
 /*
 Console.Write("Задача 27 - обращение к методу подсчета суммы цифр введенного целого числа\n\n");
