@@ -369,39 +369,34 @@ int DimensionOfEvenNum(int dimThDigit, int[] arrThDigit)    // подсчёт ч
     return(countEvenNum);
 }
 */
-/*
-// Метод Задачи 27 - подсчет суммы цифр введенного целого числа
+
+// Метод Задачи 38 - определение максимума в массиве
         
-int SumOfDigit(int argNum)  
+int MaxTask38(int dimDigit, int[] arrDigit)  
 {
-    int argRez = 0;
-    int tmpNum = argNum;
+    int maxRez = arrDigit[0];
+
+    if (dimDigit == 1) return(maxRez);
     
-    do {
-        argRez = argRez + (tmpNum % 10);
-        tmpNum = tmpNum / 10;
-    } while ((tmpNum * 10) > 10);
-    return(argRez);
+    for (int n = 1; n < dimDigit; n++) if (arrDigit[n] > maxRez)  maxRez = arrDigit[n];
+    
+    return(maxRez);
 }
 
 
 // "Метод Задачи 29 - создание массива заданной размерности и вывод его на экран
 
-void CreateArrayOnDisplay(int numElem)  
+int MinTask38(int dimDigit, int[] arrDigit)   
 {
-    int[] tmpArray = new int[numElem];
-    Random tmpRand = new Random();
+    int minRez = arrDigit[0];
 
-    Console.Write($"Массив из {numElem} элементов > ");
-
-    for (int n = 0; n < numElem-1; n++) {
-        tmpArray[n] = tmpRand.Next(0, 100);
-        Console.Write($"{tmpArray[n]}, ");
-    }
-    tmpArray[numElem-1] = tmpRand.Next(0, 100); // присвоение значения последнему элементу вынесено для красивого вывода - отсутсвие запятой и перевод строки
-    Console.Write($"{tmpArray[numElem-1]}\n\n");
+    if (dimDigit == 1) return(minRez);
+    
+    for (int n = 1; n < dimDigit; n++) if (arrDigit[n] < minRez) minRez = arrDigit[n];
+    
+    return(minRez);
 }
-*/
+
 
 /*
 int MaxOfTwo(int one, int two) //задача 2 - максимум из двух чисел
@@ -549,10 +544,10 @@ Console.Write("Задача 34 - заполнение массива задан�
     Console.Write($"В массиве из {dimOfThreeArray} элементов > ");
     for (int n = 0; n < dimOfThreeArray-1; n++) Console.Write($"{arrayOfThreeDigit[n]}, ");
     Console.Write($"{arrayOfThreeDigit[dimOfThreeArray-1]} содержится {numOfEvenNum} четных элементов \n\n"); 
-*/
+
      
 Console.Write("Задача 36 - заполнение массива случайными числами, подсчет суммы элементов нечётных позиций\n\n");
-Console.Write("Чтобы не загромождать вывод, числа генерируем в пределах 100\n\n");
+Console.Write("Чтобы не загромождать вывод, числа генерируем в пределах модуля 100\n\n");
 Console.Write("Просто для разнообразия не вызываем методы, все делаем прямо здесь\n\n");
         
     Console.Write("Введите размерность массива > ");
@@ -566,12 +561,34 @@ Console.Write("Просто для разнообразия не вызывае�
     Console.Write($"Сумма чисел на нечетных позициях массива из {dimensOfArrayTask36} элементов > ");
 
     for (int n = 0; n < dimensOfArrayTask36; n++) {
-        arrayOfTask36[n] = numRandTask36.Next(0, 100); 
+        arrayOfTask36[n] = numRandTask36.Next(-100, 100); 
         Console.Write($"{arrayOfTask36[n]}  ");
         if (n % 2 == 0) rezultTask36 = rezultTask36 + arrayOfTask36[n];
     }
 
     Console.Write($"составляет {rezultTask36}\n\n");
+ */   
+
+     
+Console.Write("Задача 38 - заполнение массива вещественными числами, подсчет разницы между min и max\n\n");
+Console.Write("Чтобы не загромождать вывод, числа генерируем в пределах 100\n\n");
+Console.Write("Для корректного решения задачи не хватает знаний о генераторе случайных чисел типа float\n\n");
+        
+    Console.Write("Введите размерность массива > ");
+    int dimensOfArrayTask38 = Convert.ToInt32(Console.ReadLine()); 
+    int[] arrayOfTask38 = new int[dimensOfArrayTask38];
+
+    Random numRandTask38 = new Random();
+    
+    Console.Write($"Разница между минимальным и максимальным элементом массива из {dimensOfArrayTask38} элементов > ");
+
+    for (int n = 0; n < dimensOfArrayTask38; n++) {
+        arrayOfTask38[n] = numRandTask38.Next(0, 100); 
+        Console.Write($"{arrayOfTask38[n]}  ");
+        
+    }
+    
+    Console.Write($" > составляет {MaxTask38(dimensOfArrayTask38, arrayOfTask38) - MinTask38(dimensOfArrayTask38, arrayOfTask38)}\n\n");
     
 
 
