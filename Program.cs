@@ -288,7 +288,7 @@ void AllCube(int mCube)  // Выводит кубы чисел от нуля д�
 
     Console.Write($"{Math.Pow(startNum, 3)}\n");
 }
-*/
+
 
 // Методы к уроку 4
 
@@ -345,7 +345,63 @@ void CreateArrayOnDisplay(int numElem)
     tmpArray[numElem-1] = tmpRand.Next(0, 100); // присвоение значения последнему элементу вынесено для красивого вывода - отсутсвие запятой и перевод строки
     Console.Write($"{tmpArray[numElem-1]}\n\n");
 }
+*/
 
+// Методы к уроку 5
+
+// "Методы Задачи 34 - 1) заполнение массива заданной размерности, 2) подсчёт четных чисел в массиве\n\n"
+
+void ArrayThreeDigit(int dimThDigit, int[] arrThDigit)  // заполнение массива заданной размерности трёхзначными числаим
+{
+    Random tmpRand = new Random();
+
+    for (int n = 0; n < dimThDigit; n++) {
+        arrThDigit[n] = tmpRand.Next(100, 999);
+    }
+}
+
+int DimensionOfEvenNum(int dimThDigit, int[] arrThDigit)    // подсчёт четных чисел в массиве целых
+{
+    int countEvenNum = 0;
+    
+    for (int n = 0; n < dimThDigit; n++) if (arrThDigit[n] % 2 == 0) countEvenNum++;
+    
+    return(countEvenNum);
+}
+
+/*
+// Метод Задачи 27 - подсчет суммы цифр введенного целого числа
+        
+int SumOfDigit(int argNum)  
+{
+    int argRez = 0;
+    int tmpNum = argNum;
+    
+    do {
+        argRez = argRez + (tmpNum % 10);
+        tmpNum = tmpNum / 10;
+    } while ((tmpNum * 10) > 10);
+    return(argRez);
+}
+
+
+// "Метод Задачи 29 - создание массива заданной размерности и вывод его на экран
+
+void CreateArrayOnDisplay(int numElem)  
+{
+    int[] tmpArray = new int[numElem];
+    Random tmpRand = new Random();
+
+    Console.Write($"Массив из {numElem} элементов > ");
+
+    for (int n = 0; n < numElem-1; n++) {
+        tmpArray[n] = tmpRand.Next(0, 100);
+        Console.Write($"{tmpArray[n]}, ");
+    }
+    tmpArray[numElem-1] = tmpRand.Next(0, 100); // присвоение значения последнему элементу вынесено для красивого вывода - отсутсвие запятой и перевод строки
+    Console.Write($"{tmpArray[numElem-1]}\n\n");
+}
+*/
 
 /*
 int MaxOfTwo(int one, int two) //задача 2 - максимум из двух чисел
@@ -434,7 +490,7 @@ Console.Write("Задача 23 - вывод кубов до заданного �
     Console.Write("Введите целое число > ");
     int maxCubeNum = Convert.ToInt32(Console.ReadLine());NumToGivenDegree()
     AllCube(maxCubeNum);
-*/
+
 
 
 // Задачи урока 4
@@ -471,6 +527,54 @@ Console.Write("Чтобы не загромождать вывод, числа �
     int dimensOfArray = Convert.ToInt32(Console.ReadLine()); 
 
     CreateArrayOnDisplay(dimensOfArray);     
+*/
+
+
+// Задачи урока 5
+
+
+Console.Write("Задача 34 - заполнение массива заданной размерности случайными трехзначными числами, подсчёт четных чисел в этом массиве\n\n");
+//Console.Write("Предупреждение! Поскольку мы не работали с представлением чисел float, используется тип int\n\n");
+    
+
+    Console.Write("Введите размерность массива > ");
+    int dimOfThreeArray = Convert.ToInt32(Console.ReadLine());
+    int[] arrayOfThreeDigit = new int[dimOfThreeArray];
+
+    int numOfEvenNum = 0;
+
+    ArrayThreeDigit(dimOfThreeArray, arrayOfThreeDigit);  // заполнение массива выделено в отдельную функцию в учебных целях
+    numOfEvenNum = DimensionOfEvenNum(dimOfThreeArray, arrayOfThreeDigit);
+    
+    Console.Write($"В массиве из {dimOfThreeArray} элементов > ");
+    for (int n = 0; n < dimOfThreeArray-1; n++) Console.Write($"{arrayOfThreeDigit[n]}, ");
+    Console.Write($"{arrayOfThreeDigit[dimOfThreeArray-1]} содержится {numOfEvenNum} четных элементов \n\n"); 
+
+  
+    
+
+/*
+Console.Write("Задача 27 - обращение к методу подсчета суммы цифр введенного целого числа\n\n");
+        
+    Console.Write("Введите целое число больше нуля > ");
+    int tmpInt = Convert.ToInt32(Console.ReadLine()); 
+
+    int rezSum = SumOfDigit(tmpInt);
+    Console.Write($"Сумма цифр числа {tmpInt} -> {rezSum} \n\n");
+
+
+     
+Console.Write("Задача 29 - обращение к методу создания массива заданной размерности и вывода его на экран\n\n");
+Console.Write("Чтобы не загромождать вывод, числа генерируем в пределах 100\n\n");
+        
+    Console.Write("Введите размерность массива > ");
+    int dimensOfArray = Convert.ToInt32(Console.ReadLine()); 
+
+    CreateArrayOnDisplay(dimensOfArray);     
+
+    */
+
+
 
 
     
