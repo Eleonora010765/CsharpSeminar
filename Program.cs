@@ -345,7 +345,7 @@ void CreateArrayOnDisplay(int numElem)
     tmpArray[numElem-1] = tmpRand.Next(0, 100); // присвоение значения последнему элементу вынесено для красивого вывода - отсутсвие запятой и перевод строки
     Console.Write($"{tmpArray[numElem-1]}\n\n");
 }
-
+*/
 
 // Методы к уроку 5
 
@@ -368,7 +368,7 @@ int DimensionOfEvenNum(int dimThDigit, int[] arrThDigit)    // подсчёт ч
     
     return(countEvenNum);
 }
-*/
+
 
 // Метод Задачи 38 - определение максимума в массиве
         
@@ -384,7 +384,7 @@ int MaxTask38(int dimDigit, int[] arrDigit)
 }
 
 
-// "Метод Задачи 29 - создание массива заданной размерности и вывод его на экран
+// "Метод Задачи 38 - определение минимума в массиве
 
 int MinTask38(int dimDigit, int[] arrDigit)   
 {
@@ -450,8 +450,8 @@ Console.Write("Задача 19 - является ли пятизначное ч
     if (oneNum < 10000 || oneNum > 99999) { Console.Write("Недопустимое значение ввода\n\n");
     else {
         flag = DefPalindromFiveDigit(oneNum); 
-        if (flag) Console.Write($"Число {oneNum} является палиндромом\n\n");
-        else Console.Write($"Число {oneNum} не является палиндромом\n\n");
+        if (flag) Console.Write($"Число {oneNum} является палиндромом\n\n\n");
+        else Console.Write($"Число {oneNum} не является палиндромом\n\n\n");
     }
 
 
@@ -475,15 +475,15 @@ Console.Write("Задача 21 - расстояние между двумя то
                 coordSecond[l] = coordTmp[l];
             }
             double distPoint = DistPointThreeDimSpace();
-            Console.Write($"Расстояние {distPoint}\n\n");
-        } else Console.Write("Ошибка ввода\n\n");
+            Console.Write($"Расстояние {distPoint}\n\n\n");
+        } else Console.Write("Ошибка ввода\n\n\n");
     }  
-    else Console.Write("Ошибка ввода\n\n");
+    else Console.Write("Ошибка ввода\n\n\n");
 
 Console.Write("Задача 23 - вывод кубов до заданного числа с учетом знака\n\n");
         
     Console.Write("Введите целое число > ");
-    int maxCubeNum = Convert.ToInt32(Console.ReadLine());NumToGivenDegree()
+    int maxCubeNum = Convert.ToInt32(Console.ReadLine());
     AllCube(maxCubeNum);
 
 
@@ -501,7 +501,7 @@ Console.Write("Предупреждение! Поскольку мы не раб
 // только при ответе y вызываем метод возведения в степень bool NumToGivenDegree()? весь ввод-вывод внутри метода
     if (flagExit == "y") {
         rezExp = NumToGivenDegree();
-        if (!rezExp) Console.Write("Ошибка ввода\n\n");
+        if (!rezExp) Console.Write("Ошибка ввода\n\n\n");
     }
 
 
@@ -511,7 +511,7 @@ Console.Write("Задача 27 - обращение к методу подсче
     int tmpInt = Convert.ToInt32(Console.ReadLine()); 
 
     int rezSum = SumOfDigit(tmpInt);
-    Console.Write($"Сумма цифр числа {tmpInt} -> {rezSum} \n\n");
+    Console.Write($"Сумма цифр числа {tmpInt} -> {rezSum} \n\n\n");
 
 
      
@@ -522,7 +522,7 @@ Console.Write("Чтобы не загромождать вывод, числа �
     int dimensOfArray = Convert.ToInt32(Console.ReadLine()); 
 
     CreateArrayOnDisplay(dimensOfArray);     
-
+*/ 
 
 
 // Задачи урока 5
@@ -543,7 +543,7 @@ Console.Write("Задача 34 - заполнение массива задан�
     
     Console.Write($"В массиве из {dimOfThreeArray} элементов > ");
     for (int n = 0; n < dimOfThreeArray-1; n++) Console.Write($"{arrayOfThreeDigit[n]}, ");
-    Console.Write($"{arrayOfThreeDigit[dimOfThreeArray-1]} содержится {numOfEvenNum} четных элементов \n\n"); 
+    Console.Write($"{arrayOfThreeDigit[dimOfThreeArray-1]} содержится {numOfEvenNum} четных элементов \n\n\n"); 
 
      
 Console.Write("Задача 36 - заполнение массива случайными числами, подсчет суммы элементов нечётных позиций\n\n");
@@ -566,8 +566,8 @@ Console.Write("Просто для разнообразия не вызывае�
         if (n % 2 == 0) rezultTask36 = rezultTask36 + arrayOfTask36[n];
     }
 
-    Console.Write($"составляет {rezultTask36}\n\n");
- */   
+    Console.Write($"составляет {rezultTask36}\n\n\n");
+  
 
      
 Console.Write("Задача 38 - заполнение массива вещественными числами, подсчет разницы между min и max\n\n");
@@ -588,32 +588,12 @@ Console.Write("Для корректного решения задачи не х
         
     }
     
-    Console.Write($" > составляет {MaxTask38(dimensOfArrayTask38, arrayOfTask38) - MinTask38(dimensOfArrayTask38, arrayOfTask38)}\n\n");
+    Console.Write($" > составляет {MaxTask38(dimensOfArrayTask38, arrayOfTask38) - MinTask38(dimensOfArrayTask38, arrayOfTask38)}\n\n\n");
     
 
 
 
 
-/*
-Console.Write("Задача 27 - обращение к методу подсчета суммы цифр введенного целого числа\n\n");
-        
-    Console.Write("Введите целое число больше нуля > ");
-    int tmpInt = Convert.ToInt32(Console.ReadLine()); 
-
-    int rezSum = SumOfDigit(tmpInt);
-    Console.Write($"Сумма цифр числа {tmpInt} -> {rezSum} \n\n");
-
-
-     
-Console.Write("Задача 29 - обращение к методу создания массива заданной размерности и вывода его на экран\n\n");
-Console.Write("Чтобы не загромождать вывод, числа генерируем в пределах 100\n\n");
-        
-    Console.Write("Введите размерность массива > ");
-    int dimensOfArray = Convert.ToInt32(Console.ReadLine()); 
-
-    CreateArrayOnDisplay(dimensOfArray);     
-
-    */
 
 
 
