@@ -672,6 +672,47 @@ Console.Write("Задача 41 - ввести с клавиатуры числа
     Console.WriteLine($"Количество чисел больше 0 > {numGreatedNull}\n\n");
 
 
+double[] DiterminepointIntersection(double[] equatArray)
+{
+    double[] coordRet = {0, 0};
+
+    coordRet[0] = (double)( (equatArray[3]-equatArray[1])/(equatArray[0]-equatArray[2]) );
+    coordRet[1] = (double)( (equatArray[0] * ( (equatArray[3]-equatArray[1]) / (equatArray[0]-equatArray[2]) ) )+ equatArray[1] );
+    
+    Console.WriteLine(String.Join(",", equatArray));
+    Console.WriteLine(String.Join(",", coordRet));
+            
+    return(coordRet);
+}
+
+
+Console.Write("Задача 43 - Вычислить точку пересечения прямых, заданных уравнением прямой\nn");
+Console.Write("Принимаем, что коэффициенты и постоянные - целые числа\n\n");
+
+    double[] equationsLine = {0.0, 0.0, .0, .0}; 
+
+    Console.Write("Уравнение первой прямой: введите целый коэффициент > ");
+    int tmp1 = Convert.ToInt32(Console.ReadLine()); 
+    equationsLine[0] = (double)tmp1;
+    Console.Write("                         введите целую постоянную  > ");
+    int tmp2 = Convert.ToInt32(Console.ReadLine()); 
+    equationsLine[1] = (double)tmp2;
+    Console.Write("Уравнение второй прямой: введите целый коэффициент > ");
+    int tmp3 = Convert.ToInt32(Console.ReadLine()); 
+    equationsLine[2] = (double)tmp3;
+    Console.Write("                         введите целую постоянную  > ");
+    int tmp4 = Convert.ToInt32(Console.ReadLine()); 
+    equationsLine[3] = (double)tmp4;
+    
+    double[] pointIntersection;
+    if (equationsLine[0] == equationsLine[2] && equationsLine[1] == equationsLine[3]) Console.WriteLine($"Прямые совпадают \n\n");
+    else if (equationsLine[0] == equationsLine[2]) Console.WriteLine($"Прямые параллельны \n\n");
+        else {
+            pointIntersection = DiterminepointIntersection(equationsLine);
+            Console.WriteLine($"Координаты точки пересечения > X = {pointIntersection[0]}, Y = {pointIntersection[1]}\n\n");
+        }
+
+
 
 
 
