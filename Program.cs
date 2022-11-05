@@ -678,15 +678,11 @@ double[] DiterminepointIntersection(double[] equatArray)
 
     coordRet[0] = (double)( (equatArray[3]-equatArray[1])/(equatArray[0]-equatArray[2]) );
     coordRet[1] = (double)( (equatArray[0] * ( (equatArray[3]-equatArray[1]) / (equatArray[0]-equatArray[2]) ) )+ equatArray[1] );
-    
-    Console.WriteLine(String.Join(",", equatArray));
-    Console.WriteLine(String.Join(",", coordRet));
-            
     return(coordRet);
 }
 
 
-Console.Write("Задача 43 - Вычислить точку пересечения прямых, заданных уравнением прямой\nn");
+Console.Write("Задача 43 - Вычислить точку пересечения прямых, заданных уравнением прямой\n\n");
 Console.Write("Принимаем, что коэффициенты и постоянные - целые числа\n\n");
 
     double[] equationsLine = {0.0, 0.0, .0, .0}; 
