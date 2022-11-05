@@ -669,7 +669,7 @@ Console.Write("Задача 41 - ввести с клавиатуры числа
 
     int numGreatedNull = DitermineGreatNullArray(arrayRowNum);
     
-    Console.WriteLine($"Количество чисел больше 0 > {numGreatedNull}\n\n");
+    Console.WriteLine($"Количество чисел больше 0 > {numGreatedNull}\n\n\n");
 
 
 double[] DiterminepointIntersection(double[] equatArray)
